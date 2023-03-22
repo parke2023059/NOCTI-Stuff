@@ -21,14 +21,12 @@ var orders = []
 
 function round(value) {
     value *= 100
-    Math.round(value)
+    value = Math.round(value)
     value /= 100
     return value
 }
 
-var test = 69.0009
-round(test)
-console.log(test)
+
 
 app.get('/', function(req,res){
     res.render('index.ejs')
@@ -57,9 +55,11 @@ app.post('/', function(req,res){
         order.subtotal = item.subtotal
         order.salestax = item.salestax
         order.profit = item.profit
-        order.total = item.total
         
-
+        order.subtotal = round(order.subtotal)
+        order.salestax = round(order.salestax)
+        order.profit = round(order.profit)
+        
     }
 
 
@@ -71,6 +71,7 @@ app.post('/', function(req,res){
 
 
     order.total = order.subtotal + order.shipping + order.salestax
+    order.total = round(order.total)
 
    orders.push(order)
    console.log(orders)
@@ -78,7 +79,9 @@ app.post('/', function(req,res){
 })
 
 app.get('/viewall', function(req,res){
-    res.render('viewall.ejs')
+    res.render('viewall.ejs', {
+        orders: orders
+    })
 })
 
 
