@@ -34,7 +34,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', function (req, res) {
-    res.render('index.ejs');
+    res.redirect('/viewall');
 
     let order = {
         items: [],

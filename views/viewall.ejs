@@ -11,11 +11,68 @@
 <body>
 
 
-    <%for (let items of orders){ %>
 
-        <%- orders %>
+<form action="/" method="get">
+    <input type="submit" value="Home Page">
+</form>
 
+
+
+
+
+<!-- Frontend NP2a -->
+<a href="/">Create New Order</a>
+<!-- Frontend NP2b -->
+<table border="1">
+<% for (order of orders) { %>
+    <tr>
+        <td colspan="7">
+            <%= order.name %>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7">
+            <%= order.address %>
+        </td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>Unit Price</td>
+        <td>Profit</td>
+        <td>Retail Price</td>
+        <td>Subtotal</td>
+        <td>Sales Tax</td>
+    </tr>
+    <% for (item of order.items) { %>
+        <tr>
+            <td><%= item.name %></td>
+            <td><%= item.qty %></td>
+            <td>$<%= item.unitPrice %></td>
+            <td>$<%= item.profit %></td>
+            <td>$<%= item.retailPrice %></td>
+            <td>$<%= item.subtotal %></td>
+            <td>$<%= item.salesTax %></td>
+        </tr>
     <% } %>
+    <tr>
+        <td>Shipping</td>
+        <td>Profit</td>
+        <td>Subtotal</td>
+        <td>Sales Tax</td>
+        <td colspan="3">Total</td>
+    </tr>
+    <tr>
+        <td>$<%= order.shipping %></td>
+        <td>$<%= order.profit %></td>
+        <td>$<%= order.subtotal %></td>
+        <td>$<%= order.salesTax %></td>
+        <td colspan="3">$<%= order.total %></td>
+    </tr>
+
+<% } %>
+</table>
+   
 
 </body>
 
