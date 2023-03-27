@@ -48,7 +48,7 @@ app.post('/', function(req,res){
     }
 
     if(req.body.item1) {order.items.push(new Item("Battlepass", req.body.item1, 7.13))}
-    if(req.body.item2) {order.items.push(new Item("Card", req.body.item2, 49.78))}
+    if(req.body.item2) {order.items.push(new Item("Card", req.body.item2, 14.28))}
     if(req.body.item3) {order.items.push(new Item("DLC", req.body.item3, 49.78))}
 
     for (let item of order.items) {
