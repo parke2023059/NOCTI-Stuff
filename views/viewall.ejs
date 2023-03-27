@@ -9,32 +9,32 @@
 <body>
     
 
+    <form action="/" method="get">
+        <input type="submit" value="Back">
+    </form>
 
 
 
+<table border = "1">
 
+    <% for (let i=0; i < orders.length;  i++) { %>
 
-
-
-        <table>
-        <% for(order of orders) { %>
-
-
-
-            
-            <td>
-                <%= order.name%>
+        <tr>
+            <td colspan="7" >
+                <%= orders[i].customerName %>
             </td>
+        </tr>
 
+        <tr>
+            <td colspan="7" >
+                <%= orders[i].customerAddr %>
+            </td>
+        </tr>
 
+        
+    <% } %>
 
-
-
-
-
-        <% } %>
-        </table>
-
+</table>
 
 
 
