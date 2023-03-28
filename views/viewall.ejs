@@ -17,25 +17,64 @@
 
 <table border = "1">
 
-    <% for (let i=0; i < orders.length;  i++) { %>
+    <% for (order of orders) { %>
 
         <tr>
             <td colspan="7" >
-                <%= orders[i].customerName %>
+                <%= order.customerName %>
             </td>
         </tr>
 
         <tr>
             <td colspan="7" >
-                <%= orders[i].customerAddr %>
+                <%= order.customerAddr %>
             </td>
         </tr>
 
-        
+        <tr>
+            <td>Name</td>
+            <td>Unit Price</td>
+            <td>Retail Price</td>
+            <td>Profit</td>
+            <td>Quantity</td>
+            <td>Subtotal</td>
+            <td>Sales Tax</td>
+        </tr>
+        <tr>
+            
+            <% for (item of order.items) { %>
+                <tr>
+                <td><%= item.name %></td>
+                <td><%= item.unitprice %></td>
+                <td><%= item.retailprice %></td>
+                <td><%= item.profit %></td>
+                <td><%= item.qty %></td>
+                <td><%= item.subtotal %></td>
+                <td><%= item.salestax %></td>
+                </tr>
+            <% } %>
+            <td>Shipping</td>
+            <td>Profit</td>
+            <td>Subtotal</td>
+            <td>Sales Tax</td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            
+                <td><%= order.shipping %></td>
+                <td><%= order.profit %></td>
+                <td><%= order.subtotal %></td>
+                <td><%= order.salestax %></td>
+                <td colspan="3"><%= order.total%></td>
+        </tr>
     <% } %>
 
 </table>
-
+<% let units = 0; let profit = 0; %>
+<% for (let order of orders) { %>
+    <% units += order.items.length; profit += order.profit; %>
+<% } %>
+Units sold: <%= units %>, Total Profit: <%= profit %>
 
 
 
