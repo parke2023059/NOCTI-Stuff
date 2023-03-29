@@ -54,11 +54,15 @@ app.post('/', function(req,res){
 
 
     for (var item of order.items){
-      order.subtotal = item.subtotal
-      order.salestax = item.salestax
-      order.profit = item.profit
+      order.subtotal = round(item.subtotal)
+      order.salestax = round(item.salestax)
+      order.profit = round(item.profit)
 
-       
+        order.subtotal += item.subtotal
+        order.salestax += item.salestax
+        order.profit += item.profit
+
+
 
 
     }
