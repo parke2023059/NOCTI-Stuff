@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Orders</title>
+</head>
+<body>
+    
+    <table border="1">
+
+        <% for (order of orders) { %>
+
+            <tr>
+                <td colspan="7">
+                    <%= order.customerName %>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <%= order.customerAddress %>
+                </td>
+            </tr>
+           
+            <% for (item of order.items) { %>
+                <tr>
+                    <td>Item Name</td>
+                    <td>Unit Price</td>
+                    <td>Retail Price</td>
+                    <td>Profit</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                    <td>Salestax</td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= item.name %>
+                    </td>
+                    <td>
+                        <%= item.unitprice %>
+                    </td>
+                    <td>
+                        <%= item.retailprice %>
+                    </td>
+                    <td>
+                        <%= item.profit %>
+                    </td>
+                    <td>
+                        <%= item.qty %>
+                    </td>
+                    <td>
+                        <%= item.subtotal %>
+                    </td>
+                    <td>
+                        <%= item.salestax %>
+                    </td>
+                </tr>
+            <% } %>
+                <tr>
+                    <td colspan="5">Total</td>
+                    <td colspan="2">
+                        <%= order.total %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">Shipping</td>
+                    <td colspan="2"><%= order.shipping%></td>
+                </tr>
+        <% } %>
+    </table>
+
+    <%= "Total Orders Today: " + orders.length%> <br>
+
+ 
+
+    <form action="/" method="get">
+        <input type="submit" value="Create New Order">
+    </form>
+
+
+
+
+
+
+
+</body>
+</html>
