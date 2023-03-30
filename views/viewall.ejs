@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All</title>
+</head>
+<body>
+    
+<form action="/" method="get">
+    <input type="submit" value="New Order">
+</form>
+
+<table border="1">
+    <% for (order of orders) { %>
+        <tr>
+            <td colspan="7">
+                <%= order.name %>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <%= order.address %>
+            </td>
+        </tr>
+        <% for (let item of order.items ) { %>
+            <tr>
+                <td>Item Name</td>
+                <td>Unit Price</td>
+                <td>Retail Price</td>
+                <td>Profit</td>
+                <td>Quantity</td>
+                <td>Subtotal</td>
+                <td>Sales Tax</td>
+            </tr>
+    
+            <tr>
+                <td><%= item.name %></td>
+                <td><%= item.unitprice %></td>
+                <td><%= item.retailprice %></td>
+                <td><%= item.profit %></td>
+                <td><%= item.qty %></td>
+                <td><%= item.subtotal %></td>
+                <td><%= item.salestax %></td>
+                
+            </tr>
+    
+    
+         
+    <% } %>  
+            <tr>
+                <td colspan="6">
+                    Shipping
+                </td>
+                <td>
+                    <%= order.shipping %>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    Total
+                </td>
+                <td>
+                    <%= order.total %>
+                </td>
+            </tr>
+    <% } %>    
+    
+</table>
+
+<%= "Total Orders Today: " + orders.length %>
+
+
+
+
+
+
+
+</body>
+</html>
